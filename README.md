@@ -20,14 +20,14 @@
 
 ## Overview
 
-**Only Yoga** This app will allow users to view yoga poses and see those poses in a routine. The app will have user authentication and once a user is registered and logged in they can create a daily log to take notes on the routines and poses they practiced. 
+**Only Yoga** This app will allow users to view yoga poses. The app will have user authentication and once a user is registered and logged in they can create a daily log to take notes on the poses they practiced. 
 
 
 <br>
 
 ## MVP
 
-The **Only Yoga** MVP will have full CRUD for logs. The database will have four tables, poses, routines, users, and logs and use postgreSQL. The app will be built using Ruby on Rails and React. 
+The **Only Yoga** MVP will have full CRUD for logs. The database will have three tables, poses, users, and logs and use postgreSQL. The app will be built using Ruby on Rails and React. 
 
 <br>
 
@@ -50,6 +50,7 @@ The **Only Yoga** MVP will have full CRUD for logs. The database will have four 
 |    PostgreSQL     | Database to store app information          |
 |  Ruby on Rails    | Used to interact with the database         |
 | Styled Components | Used to allow styling in JSX               |
+|      Axios        | Used to call database                      |
 
 <br>
 
@@ -57,89 +58,97 @@ The **Only Yoga** MVP will have full CRUD for logs. The database will have four 
 
 #### Wireframes
 
-![Mobile Landing](https://wireframe.cc/y3BzAh)
-![Tablet Landing](https://wireframe.cc/lkQFMo) 
-![Desktop Landing](https://wireframe.cc/obOeRV)
+[Mobile Landing](https://wireframe.cc/y3BzAh)
+[Tablet Landing](https://wireframe.cc/lkQFMo) 
+[Desktop Landing](https://wireframe.cc/obOeRV)
 
 - Landing Views
 
-![Mobile Poses](https://wireframe.cc/sPhD6u)
-![Tablet Poses](https://wireframe.cc/WwvhLj)
-![Desktop Poses](https://wireframe.cc/qLrorX)
+[Mobile Poses](https://wireframe.cc/sPhD6u)
+[Tablet Poses](https://wireframe.cc/WwvhLj)
+[Desktop Poses](https://wireframe.cc/qLrorX)
 
 - Poses Index Views
 
-![Mobile Pose](https://wireframe.cc/uoFkfW)
-![Tablet Pose](https://wireframe.cc/uhEkP2)
-![Desktop Pose](https://wireframe.cc/Mf1XH2)
+[Mobile Pose](https://wireframe.cc/uoFkfW)
+[Tablet Pose](https://wireframe.cc/uhEkP2)
+[Desktop Pose](https://wireframe.cc/Mf1XH2)
 
 - Pose Show View
 
-![Dummy Link](url)
-
-- Routine Index
-
-![Dummy Link](url)
-
-- Routine Show
-
-![Dummy Link](url)
+[Mobile Logs](https://wireframe.cc/JcoVLW)
+[Tablet Logs](https://wireframe.cc/a2cB3J)
+[Desktop Logs](https://wireframe.cc/O5egUT)
 
 - Log Index
 
-![Dummy Link](url)
+[Dummy Link](url)
 
 - Log Show
 
-![Dummy Link](url)
+[Dummy Link](url)
 
 - Log Edit
 
 #### Component Tree
 
-> Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. 
+[Whimsical](https://whimsical.com/3sVEv8KN8rJmGeDwfUCo6G)
 
 #### Component Hierarchy
-
-> Use this section to define your React components and the data architecture of your app. This should be a reflection of how you expect your directory/file tree to look like. 
 
 ``` structure
 
 src
-|__ assets/
-      |__ fonts
-      |__ graphics
-      |__ images
-      |__ mockups
 |__ components/
-      |__ Header.jsx
+      |__ shared
+          |__ Nav.jsx
+          |__ Footer.jsx
+          |__ Layout.jsx
+      |__ Pose.jsx
+      |__ PoseCard.jsx
+      |__ Login.jsx
+      |__ Register.jsx
+|__ screens/
+      |__ Home.jsx
+      |__ Poses.jsx
+      |__ PoseDetails.jsx
+      |__ Log.jsx
+      |__ LogDetail.jsx
+      |__ LogEdit.jsx
 |__ services/
+  |__ api-config.js
+  |__ auth.js
+  |__ poses.js
+  |__ log.js
 
 ```
 
 #### Component Breakdown
 
-> Use this section to go into further depth regarding your components, including breaking down the components as stateless or stateful, and considering the passing of data between those components.
-
-|  Component   |    Type    | state | props | Description                                                      |
-| :----------: | :--------: | :---: | :---: | :--------------------------------------------------------------- |
-|    Header    | functional |   n   |   n   | _The header will contain the navigation and logo._               |
-|  Navigation  | functional |   n   |   n   | _The navigation will provide a link to each of the pages._       |
-|   Gallery    |   class    |   y   |   n   | _The gallery will render the posts using cards in flexbox._      |
-| Gallery Card | functional |   n   |   y   | _The cards will render the post info via props._                 |
-|    Footer    | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._ |
+|  Component   | state | props | Description                                                    |
+| :----------: | :---: | :---: | :------------------------------------------------------------- |
+|  Navigation  |   n   |   n   | The navigation will provide a link to each of the pages.       |
+|    Poses     |   y   |   y   | The gallery will render the posts using cards in flexbox.      |
+| Pose Detail  |   y   |   y   | The pose detail will render the pose info via props.           |
+|     Log      |   y   |   y   | The log will render the log posts and allow deletions.         |
+|   Log Edit   |   y   |   y   | The log edit will render the forms that allow edited           |
+|     Home     |   y   |   y   | The home will render login/register component.                 |
+|    Layout    |   y   |   y   | The layout will render children, nav, and footer components.   |
+|    Footer    |   n   |   n   | The footer will link to my portfolio and include copyright.    |
 
 #### Time Estimates
 
-> Use this section to estimate the time necessary to build out each of the components you've described above.
-
 | Task                | Priority | Estimated Time | Time Invested | Actual Time |
 | ------------------- | :------: | :------------: | :-----------: | :---------: |
-| Add Contact Form    |    L     |     3 hrs      |     2 hrs     |    3 hrs    |
-| Create CRUD Actions |    H     |     3 hrs      |     1 hrs     |     TBD     |
-| TOTAL               |          |     6 hrs      |     3 hrs     |     TBD     |
+| Layout         |    M     |     2 hrs      |     - hrs     |     TBD     |
+| Poses          |    H     |     3 hrs      |     - hrs     |     TBD     |
+| Pose Detail    |    H     |     1 hrs      |     - hrs     |     TBD     |
+| Log            |    H     |     1 hrs      |     - hrs     |     TBD     |
+| Log Edit       |    H     |     3 hrs      |     - hrs     |     TBD     |
+| Home           |    M     |     3 hrs      |     - hrs     |     TBD     |
+| Login/Register |    H     |     3 hrs      |     - hrs     |     TBD     |
+| TOTAL          |          |     16 hrs     |     - hrs     |     TBD     |
 
-> _Why is this necessary? Time frames are key to the development cycle. You have limited time to code your app, and your estimates can then be used to evaluate possibilities of your MVP and post-MVP based on time needed. It's best you assume an additional hour for each component, as well as a few hours added to the total time, to play it safe._
 
 <br>
 
@@ -147,7 +156,7 @@ src
 
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model. You can use draw.io, Lucidchart or another ERD tool.
+![ERD](https://i.imgur.com/1f7izTc.png)
 
 <br>
 
@@ -155,7 +164,7 @@ src
 
 ## Post-MVP
 
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+Create a routines table that allows users to see poses in a routine. 
 
 ***
 
