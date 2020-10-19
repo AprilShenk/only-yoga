@@ -16,7 +16,7 @@ puts "#{User.count} users created"
 @example_log = Log.create!(description: 'Balance was off today', user: @user)
 puts "#{Log.count} logs created"
 
-@downward_dog = Pose.create!(name: "Downward Dog", description: "Hands and feet on ground and hips high", difficulty: "Beginner")
+@downward_dog = Pose.create!(name: "Downward Dog", description: "Hands and feet on ground and hips high", difficulty: "Beginner", image: "https://www.yogajournal.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_472/MTQ2MTgwNzUyNzM5NTQyNDYx/feature-image-4252.webp")
 puts "#{Pose.count} poses created"
 
 @example_log.poses.push(@downward_dog)

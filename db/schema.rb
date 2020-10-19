@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_185731) do
     t.string "name"
     t.string "description"
     t.string "difficulty"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

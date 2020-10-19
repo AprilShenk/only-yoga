@@ -4,6 +4,7 @@ class CreatePoses < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :description
       t.string :difficulty
+      t.string :image
 
       t.timestamps
     end
