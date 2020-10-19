@@ -58,38 +58,38 @@ The **Only Yoga** MVP will have full CRUD for logs. The database will have three
 
 #### Wireframes
 
-[Mobile Landing](https://wireframe.cc/y3BzAh)
-[Tablet Landing](https://wireframe.cc/lkQFMo) 
+[Mobile Landing](https://wireframe.cc/y3BzAh) |
+[Tablet Landing](https://wireframe.cc/lkQFMo) |
 [Desktop Landing](https://wireframe.cc/obOeRV)
 
 - Landing Views
 
-[Mobile Poses](https://wireframe.cc/sPhD6u)
-[Tablet Poses](https://wireframe.cc/WwvhLj)
+[Mobile Poses](https://wireframe.cc/sPhD6u) |
+[Tablet Poses](https://wireframe.cc/WwvhLj) |
 [Desktop Poses](https://wireframe.cc/qLrorX)
 
 - Poses Index Views
 
-[Mobile Pose](https://wireframe.cc/uoFkfW)
-[Tablet Pose](https://wireframe.cc/uhEkP2)
+[Mobile Pose](https://wireframe.cc/uoFkfW) |
+[Tablet Pose](https://wireframe.cc/uhEkP2) |
 [Desktop Pose](https://wireframe.cc/Mf1XH2)
 
 - Pose Show Views
 
-[Mobile Logs](https://wireframe.cc/JcoVLW)
-[Tablet Logs](https://wireframe.cc/a2cB3J)
+[Mobile Logs](https://wireframe.cc/JcoVLW) |
+[Tablet Logs](https://wireframe.cc/a2cB3J) |
 [Desktop Logs](https://wireframe.cc/O5egUT)
 
 - Log Index Views
 
-[Mobile Log Show](https://wireframe.cc/a8qTga)
-[Tablet Log Show](https://wireframe.cc/JU88u7)
+[Mobile Log Show](https://wireframe.cc/a8qTga) |
+[Tablet Log Show](https://wireframe.cc/JU88u7) |
 [Desktop Log Show](https://wireframe.cc/GDnFzV)
 
 - Log Show Views
 
-[Mobile Log Show](https://wireframe.cc/zohJo1)
-[Tablet Log Show](https://wireframe.cc/VR5Uzz)
+[Mobile Log Show](https://wireframe.cc/zohJo1) |
+[Tablet Log Show](https://wireframe.cc/VR5Uzz) |
 [Desktop Log Show](https://wireframe.cc/z0ucPB)
 
 - Log Create and Edit Views
