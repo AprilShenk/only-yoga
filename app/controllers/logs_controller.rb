@@ -11,7 +11,7 @@ class LogsController < ApplicationController
 
   # GET /logs/1
   def show
-    render json: @log
+    render json: @log, include: :poses
   end
 
   # POST /logs
@@ -38,7 +38,7 @@ class LogsController < ApplicationController
   def add_pose
     @log = Log.find(params[:id])
     @pose = Pose.find(params[:pose_id])
-    @log.pose << @pose
+    @log.poses << @pose
 
     render json: @log, include: :poses
   end

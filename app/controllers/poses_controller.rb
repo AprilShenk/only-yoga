@@ -1,5 +1,5 @@
 class PosesController < ApplicationController
-  # before_action :set_pose, only: [:show, :update, :destroy]
+  before_action :set_pose, only: [:show, :update, :destroy]
 
   # GET /poses
   def index
@@ -38,11 +38,11 @@ class PosesController < ApplicationController
   #   @pose.destroy
   # end
 
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_pose
-  #     @pose = Pose.find(params[:id])
-  #   end
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_pose
+      @pose = Pose.find(params[:id])
+    end
 
   #   # Only allow a trusted parameter "white list" through.
   #   def pose_params
