@@ -34,10 +34,9 @@ The **Only Yoga** MVP will have full CRUD for logs. The database will have three
 ### Goals
 
 - Responsive Design
-- 
-- _Phasellus dapibus fermentum risus vitae bibendum._
-- _Integer vel ipsum mollis odio sollicitudin ornare eu vel ex._
-- _etc._
+- Full Stack CRUD
+- Backend built with Ruby on Rails and postgreSQL.
+- At least one to many table relation.
 
 <br>
 
@@ -51,6 +50,7 @@ The **Only Yoga** MVP will have full CRUD for logs. The database will have three
 |  Ruby on Rails    | Used to interact with the database         |
 | Styled Components | Used to allow styling in JSX               |
 |      Axios        | Used to call database                      |
+|   Font Awesome    | Used for icons                             |
 
 <br>
 
@@ -74,21 +74,25 @@ The **Only Yoga** MVP will have full CRUD for logs. The database will have three
 [Tablet Pose](https://wireframe.cc/uhEkP2)
 [Desktop Pose](https://wireframe.cc/Mf1XH2)
 
-- Pose Show View
+- Pose Show Views
 
 [Mobile Logs](https://wireframe.cc/JcoVLW)
 [Tablet Logs](https://wireframe.cc/a2cB3J)
 [Desktop Logs](https://wireframe.cc/O5egUT)
 
-- Log Index
+- Log Index Views
 
-[Dummy Link](url)
+[Mobile Log Show](https://wireframe.cc/a8qTga)
+[Tablet Log Show](https://wireframe.cc/JU88u7)
+[Desktop Log Show](https://wireframe.cc/GDnFzV)
 
-- Log Show
+- Log Show Views
 
-[Dummy Link](url)
+[Mobile Log Show](https://wireframe.cc/zohJo1)
+[Tablet Log Show](https://wireframe.cc/VR5Uzz)
+[Desktop Log Show](https://wireframe.cc/z0ucPB)
 
-- Log Edit
+- Log Create and Edit Views
 
 #### Component Tree
 
@@ -113,6 +117,7 @@ src
       |__ Poses.jsx
       |__ PoseDetails.jsx
       |__ Log.jsx
+      |__ LogCreate.jsx
       |__ LogDetail.jsx
       |__ LogEdit.jsx
 |__ services/
@@ -131,7 +136,8 @@ src
 |    Poses     |   y   |   y   | The gallery will render the posts using cards in flexbox.      |
 | Pose Detail  |   y   |   y   | The pose detail will render the pose info via props.           |
 |     Log      |   y   |   y   | The log will render the log posts and allow deletions.         |
-|   Log Edit   |   y   |   y   | The log edit will render the forms that allow edited           |
+|   Log Edit   |   y   |   y   | The log edit will render the forms that allow edited.          |
+|  Log Create  |   y   |   y   | The log create will render the forms that allow create.        |
 |     Home     |   y   |   y   | The home will render login/register component.                 |
 |    Layout    |   y   |   y   | The layout will render children, nav, and footer components.   |
 |    Footer    |   n   |   n   | The footer will link to my portfolio and include copyright.    |
@@ -144,10 +150,11 @@ src
 | Poses          |    H     |     3 hrs      |     - hrs     |     TBD     |
 | Pose Detail    |    H     |     1 hrs      |     - hrs     |     TBD     |
 | Log            |    H     |     1 hrs      |     - hrs     |     TBD     |
+| Log Create     |    H     |     3 hrs      |     - hrs     |     TBD     |
 | Log Edit       |    H     |     3 hrs      |     - hrs     |     TBD     |
 | Home           |    M     |     3 hrs      |     - hrs     |     TBD     |
 | Login/Register |    H     |     3 hrs      |     - hrs     |     TBD     |
-| TOTAL          |          |     16 hrs     |     - hrs     |     TBD     |
+| TOTAL          |          |     19 hrs     |     - hrs     |     TBD     |
 
 
 <br>
