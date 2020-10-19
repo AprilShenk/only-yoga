@@ -88,9 +88,9 @@ The **Only Yoga** MVP will have full CRUD for logs. The database will have three
 
 - Log Show Views
 
-[Mobile Log Show](https://wireframe.cc/zohJo1) |
-[Tablet Log Show](https://wireframe.cc/VR5Uzz) |
-[Desktop Log Show](https://wireframe.cc/z0ucPB)
+[Mobile Log Create](https://wireframe.cc/zohJo1) |
+[Tablet Log Create](https://wireframe.cc/VR5Uzz) |
+[Desktop Log Create](https://wireframe.cc/z0ucPB)
 
 - Log Create and Edit Views
 
@@ -163,7 +163,7 @@ src
 
 #### ERD Model
 
-![ERD](https://i.imgur.com/1f7izTc.png)
+![ERD Only Yoga](https://i.imgur.com/EbC7GhB.png)
 
 <br>
 
