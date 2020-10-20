@@ -1,5 +1,31 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  width: 100%;
+  height: 60%;
+  button {
+    width: 30%;
+    margin: 0 auto;
+  }
+  div {
+    width: 80%;
+    margin: 0 auto 15px;
+    * {
+      display: flex;
+      justify-content: space-between;
+    }
+    input {
+      background: #F0F7F4;
+      border: none;
+      border-radius: 5px;
+    }
+  }
+`;
 
 const Login = (props) => {
   const [formData, setFormData] = useState({
@@ -19,7 +45,7 @@ const Login = (props) => {
   }
 
   return (
-    <form onSubmit={(e)=>{
+    <StyledForm onSubmit={(e)=>{
       e.preventDefault();
       handleLogin(formData);
     }}>
@@ -28,31 +54,34 @@ const Login = (props) => {
         error &&
         <p>{error}</p>
       }
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          name="username"
-          onChange={handleChange}
-        />
-      </label>
-      <br></br>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          name="password"
-          onChange={handleChange}
-        />
-      </label>
-      <br></br>
+      <div>
+        <label>
+          Username:&nbsp;
+          <input
+            type="text"
+            value={username}
+            name="username"
+            onChange={handleChange}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Password:&nbsp;
+          <input
+            type="password"
+            value={password}
+            name="password"
+            onChange={handleChange}
+          />
+        </label>
+      </div>
+      
       <button>Login</button>
       <p>If you do not have an account please&nbsp; 
         <Link to='/register'>register here</Link>
       </p>
-    </form>
+    </StyledForm>
   )
 };
 
