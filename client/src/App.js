@@ -7,9 +7,13 @@ import Layout from './components/shared/Layout';
 import Poses from './screens/Poses';
 import Logs from './screens/Logs';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
+import { getAllPoses } from './services/poses';
+import { getAllLogs } from './services/logs';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [poses, setPoses] = useState([]);
+  const [logs, setLogs] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -18,6 +22,19 @@ const App = () => {
       setCurrentUser(userData)
     }
     handleVerify();
+  }, [])
+
+  useEffect(() => {
+    const fetchLogs = async () => {
+      const logsData = await getAllLogs();
+      setLogs(logsData);
+    }
+    const fetchPoses = async () => {
+      const posesData = await getAllPoses();
+      setPoses(posesData);
+    }
+    fetchLogs();
+    fetchPoses();
   }, [])
 
   const handleLogin = async (loginData) => {
@@ -46,7 +63,9 @@ const App = () => {
             handleRegister={handleRegister}/>
           </Route>
           <Route exact path="/poses">
-            <Poses />
+            <Poses
+              poses={poses}
+            />
           </Route>
           <Route exact path="/logs">
             <Logs />
