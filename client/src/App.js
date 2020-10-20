@@ -23,7 +23,7 @@ const App = () => {
   const handleLogin = async (loginData) => {
     const userData = await loginUser(loginData);
     setCurrentUser(userData);
-    history.push('/')
+    history.push('/poses')
   }
 
   const handleRegister = async (registerData) => {
