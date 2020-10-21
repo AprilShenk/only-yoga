@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledDiv = styled.div`
   background: #F0F7F4;
@@ -14,9 +15,17 @@ const StyledDiv = styled.div`
 const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
+  width: 100%;
+`;
+
+const StyledLink = styled(Link)`
+  background: #70ABAF;
+  width: 25%;
+  border-radius: 5px;
+  border: none;
   button {
     background: #70ABAF;
-    width: 25%;
+    width: 100%;
     padding: 5px;
     border-radius: 5px;
     border: none;
@@ -25,7 +34,6 @@ const ButtonDiv = styled.div`
     background: #32292F;
     color: #F0F7F4;
   }
-
 `;
 
 const Logs = ({ logs }) => {
@@ -37,8 +45,9 @@ const Logs = ({ logs }) => {
         <p>Poses: {log.poses[0].name}</p>
         <p>Notes: {log.description}</p>
         <ButtonDiv>
-          <button>Edit</button>
-          <button>Delete</button>
+          <StyledLink to='/'><button>Edit</button></StyledLink>
+          
+          <StyledLink to='/'><button>Delete</button></StyledLink>
         </ButtonDiv>
         
       </StyledDiv>
