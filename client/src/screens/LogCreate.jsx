@@ -5,7 +5,7 @@ const LogCreate = (props) => {
     description: ''
   })
   const { handleLogCreate } = props;
-
+// redirecting before state updated in parent
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData({ [name]: value })

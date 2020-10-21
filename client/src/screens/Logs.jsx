@@ -47,7 +47,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Logs = ({ logs }) => {
+const Logs = ({ logs, handleLogDelete }) => {
 
   const logsJSX = 
     logs.map(log => (
@@ -64,7 +64,7 @@ const Logs = ({ logs }) => {
         <ButtonDiv>
           <StyledLink to={`/logs/${log.id}/edit`}><button>Edit</button></StyledLink>
           
-          <button>Delete</button>
+          <button onClick={() => handleLogDelete(log.id)}>Delete</button>
         </ButtonDiv>
         
       </StyledDiv>

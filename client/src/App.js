@@ -9,7 +9,7 @@ import Logs from './screens/Logs';
 import LogEdit from './screens/LogEdit';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
 import { getAllPoses } from './services/poses';
-import { getAllLogs, postLog } from './services/logs';
+import { getAllLogs, postLog, destroyLog } from './services/logs';
 import LogCreate from './screens/LogCreate';
 
 const App = () => {
@@ -32,6 +32,17 @@ const App = () => {
     fetchLogs();
     fetchPoses();
   }, [])
+
+  // handle create
+  const handleLogCreate = async (logData) => {
+    const newLog = await postLog(logData);
+    setLogs(prevState => ([...prevState, newLog]));
+    history.push('/logs')
+  }
+  // handle delete
+  const handleLogDelete = async (id) => {
+    await destroyLog(id);
+  }
 
   // handle auth
   const handleLogin = async (loginData) => {
@@ -60,13 +71,6 @@ const App = () => {
     removeToken();
   }
 
-  // handle create
-  const handleLogCreate = async (logData) => {
-    const newLog = await postLog(logData);
-    setLogs(prevState => ([...prevState, newLog]));
-    history.push('/logs')
-  }
-
   return (
     <div className="App">
       <Layout>
@@ -81,7 +85,10 @@ const App = () => {
             />
           </Route>
           <Route exact path="/logs">
-            <Logs logs={logs} />
+            <Logs
+              logs={logs}
+              handleLogDelete={handleLogDelete}
+            />
           </Route>
           <Route exact path="/logs/new">
             <LogCreate handleLogCreate={handleLogCreate} />
