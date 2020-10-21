@@ -68,7 +68,7 @@ const App = () => {
             />
           </Route>
           <Route exact path="/logs">
-            <Logs />
+            <Logs logs={logs} />
           </Route>
           <Route exact path="/">
             <Home

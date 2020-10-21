@@ -8,7 +8,7 @@ const Poses = (props) => {
       {
         poses.map(pose => (
           <div key={pose.id}>
-            <img src={pose.image} />
+            <img src={pose.image} alt={pose.name}/>
             <h4>{pose.name}</h4>
             <p>{pose.description}</p>
           </div>
