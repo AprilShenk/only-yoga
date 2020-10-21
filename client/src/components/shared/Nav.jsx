@@ -9,7 +9,7 @@ const StyledDiv = styled.div`
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #705D56;
+  color: #32292F;
   font-weight: bold;
   :hover {
     color: #32292F;

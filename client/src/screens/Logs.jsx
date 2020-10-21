@@ -7,6 +7,8 @@ const StyledDiv = styled.div`
   padding: 10px;
   width: 70%;
   border-radius: 20px;
+  color: #705D56;
+  font-weight: bold;
 `;
 
 const ButtonDiv = styled.div`
