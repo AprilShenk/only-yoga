@@ -43,7 +43,7 @@ const LogEdit = ({poses}) => {
             <label>Notes:&nbsp;
               <input
               value={log.description}
-              name="notes"
+              name="description"
               onChange={handleChange}
             />
             </label>
