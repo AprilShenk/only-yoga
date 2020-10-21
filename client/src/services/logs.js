@@ -25,7 +25,7 @@ export const destroyLog = async (id) => {
   return resp;
 }
 
-export const addFlavor = async(logId, poseId) => {
+export const addPose = async(logId, poseId) => {
   const resp = await api.put(`/poses/${poseId}/logs/${logId}`);
   return resp.data;
 }

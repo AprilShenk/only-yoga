@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Layout from './components/shared/Layout';
 import Poses from './screens/Poses';
 import Logs from './screens/Logs';
+import LogEdit from './screens/LogEdit';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
 import { getAllPoses } from './services/poses';
 import { getAllLogs } from './services/logs';
@@ -69,6 +70,9 @@ const App = () => {
           </Route>
           <Route exact path="/logs">
             <Logs logs={logs} />
+          </Route>
+          <Route exact path="/logs/:id/edit">
+            <LogEdit poses={poses} />
           </Route>
           <Route exact path="/">
             <Home

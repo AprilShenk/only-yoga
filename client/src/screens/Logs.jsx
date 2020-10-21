@@ -16,6 +16,17 @@ const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+  button {
+    background: #70ABAF;
+    width: 25%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+  }
+  button:hover {
+    background: #32292F;
+    color: #F0F7F4;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -45,9 +56,9 @@ const Logs = ({ logs }) => {
         <p>Poses: {log.poses[0].name}</p>
         <p>Notes: {log.description}</p>
         <ButtonDiv>
-          <StyledLink to='/'><button>Edit</button></StyledLink>
+          <StyledLink to={`/logs/${log.id}/edit`}><button>Edit</button></StyledLink>
           
-          <StyledLink to='/'><button>Delete</button></StyledLink>
+          <button>Delete</button>
         </ButtonDiv>
         
       </StyledDiv>
