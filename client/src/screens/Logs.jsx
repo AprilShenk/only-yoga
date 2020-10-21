@@ -53,7 +53,13 @@ const Logs = ({ logs }) => {
     logs.map(log => (
       <StyledDiv key={log.id}>
         <h6>{new Date(log.created_at).toLocaleString()}</h6>
-        <p>Poses: {log.poses[0].name}</p>
+        <div>
+          Poses: {log.poses[0] ? log.poses.map(pose => (
+          <p key={pose.id}>{pose.name}</p>
+        )) :
+        ''}
+        </div>
+        
         <p>Notes: {log.description}</p>
         <ButtonDiv>
           <StyledLink to={`/logs/${log.id}/edit`}><button>Edit</button></StyledLink>
@@ -68,7 +74,15 @@ const Logs = ({ logs }) => {
   return (
     <div>
       <h2>Logs</h2>
+      <Link to='/logs/new'>
+        <div>
+          Add
+        </div>
+      </Link>
+      <div>
         {logsJSX}
+      </div>
+        
     </div>
   );
 };

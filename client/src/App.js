@@ -9,22 +9,17 @@ import Logs from './screens/Logs';
 import LogEdit from './screens/LogEdit';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
 import { getAllPoses } from './services/poses';
-import { getAllLogs } from './services/logs';
+import { getAllLogs, postLog } from './services/logs';
+import LogCreate from './screens/LogCreate';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [poses, setPoses] = useState([]);
   const [logs, setLogs] = useState([]);
   const history = useHistory();
+  
 
-  useEffect(() => {
-    const handleVerify = async () => {
-      const userData = await verifyUser();
-      setCurrentUser(userData)
-    }
-    handleVerify();
-  }, [])
-
+  // handle logs & poses
   useEffect(() => {
     const fetchLogs = async () => {
       const logsData = await getAllLogs();
@@ -38,6 +33,7 @@ const App = () => {
     fetchPoses();
   }, [])
 
+  // handle auth
   const handleLogin = async (loginData) => {
     const userData = await loginUser(loginData);
     setCurrentUser(userData);
@@ -50,11 +46,27 @@ const App = () => {
     history.push('/')
   }
 
+  useEffect(() => {
+    const handleVerify = async () => {
+      const userData = await verifyUser();
+      setCurrentUser(userData)
+    }
+    handleVerify();
+  }, [])
+
   const handleLogout = () => {
     setCurrentUser(null);
     localStorage.removeItem('authToken');
     removeToken();
   }
+
+  // handle create
+  const handleLogCreate = async (logData) => {
+    const newLog = await postLog(logData);
+    setLogs(prevState => ([...prevState, newLog]));
+    history.push('/logs')
+  }
+
   return (
     <div className="App">
       <Layout>
@@ -71,6 +83,10 @@ const App = () => {
           <Route exact path="/logs">
             <Logs logs={logs} />
           </Route>
+          <Route exact path="/logs/new">
+            <LogCreate handleLogCreate={handleLogCreate} />
+          </Route>
+
           <Route exact path="/logs/:id/edit">
             <LogEdit poses={poses} />
           </Route>
