@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
 const LogCreate = (props) => {
+  const { handleLogCreate, poses, currentUser } = props;
+  console.log(currentUser);
   const [formData, setFormData] = useState({
     description: '',
     poses: []
   })
-  const { handleLogCreate, poses } = props;
 // redirecting before state updated in parent
   const handleChange = e => {
     const { name, value } = e.target;
@@ -18,7 +19,7 @@ const LogCreate = (props) => {
   }
 
   const currentPoses = poses.filter(pose => formData.poses.includes(pose.id))
-  console.log(currentPoses);
+  
   return (
     <>
     <h3>Create Log</h3>
