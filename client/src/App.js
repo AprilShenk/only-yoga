@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import Register from './components/Register';
 import Layout from './components/shared/Layout';
 import Poses from './screens/Poses';
+import PoseDetail from './screens/PoseDetail'
 import Logs from './screens/Logs';
 import LogEdit from './screens/LogEdit';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
@@ -92,6 +93,11 @@ const App = () => {
           </Route>
           <Route exact path="/poses">
             <Poses
+              poses={poses}
+            />
+          </Route>
+          <Route exact path="/poses/:id">
+            <PoseDetail
               poses={poses}
             />
           </Route>
