@@ -18,7 +18,7 @@ const LogCreate = (props) => {
   }
 
   const currentPoses = poses.filter(pose => formData.poses.includes(pose.id))
-
+  console.log(currentPoses);
   return (
     <>
     <h3>Create Log</h3>
