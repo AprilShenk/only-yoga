@@ -109,7 +109,10 @@ const App = () => {
             />
           </Route>
           <Route exact path="/logs/new">
-            <LogCreate handleLogCreate={handleLogCreate} />
+            <LogCreate
+              handleLogCreate={handleLogCreate}
+              poses={poses}
+            />
           </Route>
 
           <Route exact path="/logs/:id/edit">
