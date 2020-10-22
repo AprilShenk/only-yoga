@@ -2,20 +2,36 @@ import React, { useState } from 'react';
 
 const LogCreate = (props) => {
   const [formData, setFormData] = useState({
-    description: ''
+    description: '',
+    poses: []
   })
-  const { handleLogCreate } = props;
+  const { handleLogCreate, poses } = props;
 // redirecting before state updated in parent
   const handleChange = e => {
     const { name, value } = e.target;
-    setFormData({ [name]: value })
+    setFormData({ ...formData, [name]: value })
   }
+
+  const handlePoseChange = e => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, ...formData[name].push(parseInt(value)) })
+  }
+
+  const currentPoses = poses.filter(pose => formData.poses.includes(pose.id))
+
   return (
+    <>
+    <h3>Create Log</h3>
     <form onSubmit={e => {
       e.preventDefault();
       handleLogCreate(formData);
     }}>
-      <h3>Create Log</h3>
+      <select defaultValue='default' name='poses' onChange={handlePoseChange}>
+        <option disabled value='default'>-- Select a pose --</option>
+        {poses.map(pose => (
+          <option value={pose.id} key={pose.id}>{pose.name}</option>
+        ))}
+      </select>
       <label>
         Notes: 
          <input
@@ -26,7 +42,11 @@ const LogCreate = (props) => {
           />
       </label>
       <button>Add</button>
-    </form>
+      </form>
+      {currentPoses.map(pose => (
+        <p key={pose.id}>{pose.name}</p>
+      ))}
+      </>
   );
 };
 
