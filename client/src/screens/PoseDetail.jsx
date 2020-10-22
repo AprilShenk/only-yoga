@@ -15,8 +15,8 @@ const PoseDiv = styled.div`
 
 const ImageDiv = styled.div`
   border-radius: 50%;
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   margin: 0 auto;
   background-position: center;
   background-size: cover;

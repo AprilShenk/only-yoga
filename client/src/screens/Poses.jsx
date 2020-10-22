@@ -2,17 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// const PoseDiv = styled.div`
-//   background: #F0F7F4;
-//   padding 15px;
-//   width: 85%;
-//   margin: 0 auto;
-//   border-radius: 10px;
-//   color: #705D56;
-//   font-weight: bold;
-//   margin: 15px;
-// `;
-
 const ImageDiv = styled.div`
   border-radius: 50%;
   height: 200px;
@@ -36,7 +25,6 @@ const Poses = (props) => {
               style={{ backgroundImage: `url("${pose.image}")` }}
             />
             <h4>{pose.name}</h4>
-            {/* <p>{pose.description}</p> */}
           </Link>
         ))
       }
