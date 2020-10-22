@@ -54,7 +54,7 @@ const Logs = ({ logs, handleLogDelete }) => {
       <StyledDiv key={log.id}>
         <h6>{new Date(log.created_at).toLocaleString()}</h6>
         <div>
-          Poses: {log.poses[0] ? log.poses.map(pose => (
+          Poses: {log.poses ? log.poses.map(pose => (
           <p key={pose.id}>{pose.name}</p>
         )) :
         ''}

@@ -1,14 +1,20 @@
 import React from 'react';
-import Login from '../components/Login'
+import Login from '../components/Login';
 
 const Home = ({ currentUser, handleLogin, handleLogout }) => {
   return (
     <div>
-      <Login
+      <h1>Only Yoga</h1>
+      {
+        currentUser ? 
+        <button onClick={handleLogout}>Logout</button>
+          :
+          <Login
         currentUser={currentUser}
         handleLogout={handleLogout}
         handleLogin={handleLogin}
-      />
+          />
+      }
     </div>
   );
 };

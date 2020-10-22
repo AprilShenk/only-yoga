@@ -56,6 +56,13 @@ const App = () => {
     setCurrentUser(userData);
     history.push('/')
   }
+  
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('authToken');
+    removeToken();
+  }
+
 
   useEffect(() => {
     const handleVerify = async () => {
@@ -64,12 +71,6 @@ const App = () => {
     }
     handleVerify();
   }, [])
-
-  const handleLogout = () => {
-    setCurrentUser(null);
-    localStorage.removeItem('authToken');
-    removeToken();
-  }
 
   return (
     <div className="App">
