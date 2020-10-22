@@ -47,7 +47,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Logs = ({ logs, handleLogDelete }) => {
+const Logs = ({ logs, handleLogDelete, currentUser }) => {
 
   const logsJSX = 
     logs.map(log => (
@@ -74,15 +74,23 @@ const Logs = ({ logs, handleLogDelete }) => {
   return (
     <div>
       <h2>Logs</h2>
-      <Link to='/logs/new'>
-        <div>
-          Add
-        </div>
-      </Link>
-      <div>
-        {logsJSX}
-      </div>
-        
+      {
+        !currentUser ?
+          <p>Please log in to view logs</p>
+          :
+          <>
+          <Link to='/logs/new'>
+            <div>
+              Add
+            </div>
+          </Link>
+          <div>
+            {logsJSX}
+          </div>
+            </>
+      }
+      
+      
     </div>
   );
 };

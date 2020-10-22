@@ -42,6 +42,8 @@ const App = () => {
   // handle delete
   const handleLogDelete = async (id) => {
     await destroyLog(id);
+    const newLogs = logs.filter((log) => log.id !== id);
+    setLogs(newLogs)
   }
 
   // handle auth
@@ -56,7 +58,7 @@ const App = () => {
     setCurrentUser(userData);
     history.push('/')
   }
-  
+
   const handleLogout = () => {
     setCurrentUser(null);
     localStorage.removeItem('authToken');
@@ -87,6 +89,7 @@ const App = () => {
           </Route>
           <Route exact path="/logs">
             <Logs
+              currentUser={currentUser}
               logs={logs}
               handleLogDelete={handleLogDelete}
             />
