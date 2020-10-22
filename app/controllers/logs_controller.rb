@@ -16,11 +16,12 @@ class LogsController < ApplicationController
 
   # POST /logs
   def create
-    @log = Log.new(log_params)
+    @log = Log.new(description: log_params[:description])
     @log.user = @current_user
+    @log.poses = log_params[:poses].map { |id| Pose.find(id) }
 
     if @log.save
-      render json: @log, status: :created, location: @log
+      render json: @log, include: :poses, status: :created
     else
       render json: @log.errors, status: :unprocessable_entity
     end
@@ -28,17 +29,25 @@ class LogsController < ApplicationController
 
   # PATCH/PUT /logs/1
   def update
-    if @log.update(log_params)
-      render json: @log
+    if @log.update(description: log_params[:description])
+      @log.poses = log_params[:poses].map { |id| Pose.find(id) }
+      render json: @log, include: :poses
     else
       render json: @log.errors, status: :unprocessable_entity
     end
   end
+  # def update
+  #   if @log.update(log_params)
+  #     render json: @log
+  #   else
+  #     render json: @log.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   def add_pose
     @log = Log.find(params[:id])
     @pose = Pose.find(params[:pose_id])
-    @log.poses << @pose
+    @log.poses.push(@pose)
 
     render json: @log, include: :poses
   end
@@ -56,6 +65,6 @@ class LogsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def log_params
-      params.require(:log).permit(:description)
+      params.require(:log).permit(:description, poses: [])
     end
 end
