@@ -96,11 +96,11 @@ const App = () => {
               poses={poses}
             />
           </Route>
-          {/* <Route exact path="/poses/:id">
+          <Route exact path="/poses/:id">
             <PoseDetail
               poses={poses}
             />
-          </Route> */}
+          </Route>
           <Route exact path="/logs">
             <Logs
               currentUser={currentUser}
