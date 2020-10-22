@@ -1,62 +1,60 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-import { getOneLog, putLog } from '../services/logs';
+import { useParams } from 'react-router-dom';
 
-const LogEdit = ({poses}) => {
-  const [log, setLog] = useState(null);
-  // const [poseId, setPoseId] = useState('');
+const LogEdit = ({ logs, handleLogEdit }) => {
+  const [formData, setFormData] = useState({
+    description: '',
+    poses: []
+  });
   const { id } = useParams();
-  const history = useHistory();
 
   useEffect(() => {
-    const fetchLog = async () => {
-      const logItem = await getOneLog(id);
-      setLog(logItem)
+    const fillFormData = () => {
+      const { description, poses } = logs.find(log => log.id === Number(id));
+      setFormData({
+        description, 
+        poses
+      });
     }
-    fetchLog();
-  }, [id])
+    if (logs.length) {
+      fillFormData()
+    }
+  }, [logs, id])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const logItem = await putLog(id, log);
-    setLog(logItem);
-    history.push('/logs')
+    handleLogEdit(id, formData)
   }
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setLog({
-      ...log, 
+    setFormData({
       [name]: value,
     });
   }
 
   return (
-    <div>
-      {
-        log && 
-        <>
-          <h6>{new Date(log.created_at).toLocaleString()}</h6>
-          <div>Poses: {log.poses ? log.poses.map(pose => (
-            <p key={pose.id}>{pose.name}</p>
-          ))
-            : ''}
-          </div>
-          <form onSubmit={handleSubmit}>
-            <label>Notes:&nbsp;
-              <input
-              value={log.description}
-              name="description"
-              onChange={handleChange}
-            />
-            </label>
-            
-            <button>Save</button>
-          </form>
-        </>
+    <form onSubmit={handleSubmit}>
+      <h3>Edit Log</h3>
+      <div>Poses: {
+        formData.poses ? formData.poses.map(pose => (
+          <p key={pose.id}>{pose.name}</p>
+        ))
+          : ''
       }
-    </div>
-  );
+      </div>
+      <label>
+        Notes:
+         <input
+          type="textarea"
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+        />
+      </label>
+      <button>Save</button>
+    </form>
+  )
 };
 
 export default LogEdit;

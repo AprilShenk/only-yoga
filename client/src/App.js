@@ -9,7 +9,7 @@ import Logs from './screens/Logs';
 import LogEdit from './screens/LogEdit';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
 import { getAllPoses } from './services/poses';
-import { getAllLogs, postLog, destroyLog } from './services/logs';
+import { getAllLogs, postLog, putLog, destroyLog } from './services/logs';
 import LogCreate from './screens/LogCreate';
 
 const App = () => {
@@ -44,6 +44,14 @@ const App = () => {
     await destroyLog(id);
     const newLogs = logs.filter((log) => log.id !== id);
     setLogs(newLogs)
+  }
+  // handle edit
+  const handleLogEdit = async (id, logData) => {
+    const updatedLog = await putLog(id, logData);
+    setLogs(prevState => prevState.map(log => {
+      return log.id === Number(id) ? updatedLog : log
+    }))
+    history.push('/logs')
   }
 
   // handle auth
@@ -99,7 +107,10 @@ const App = () => {
           </Route>
 
           <Route exact path="/logs/:id/edit">
-            <LogEdit poses={poses} />
+            <LogEdit
+              logs={logs}
+              handleLogEdit={handleLogEdit}
+            />
           </Route>
           <Route exact path="/">
             <Home
