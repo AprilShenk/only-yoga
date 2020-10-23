@@ -29,7 +29,7 @@ const PoseDetail = ({ poses, currentUser }) => {
   return (
     <div>
       <h2>Pose Detail</h2>
-      {pose && 
+      {(pose && currentUser) ? 
         <PoseDiv key={pose.id}>
             <ImageDiv
               role="img"
@@ -38,7 +38,9 @@ const PoseDetail = ({ poses, currentUser }) => {
             />
             <h4>{pose.name}</h4>
             <p>{pose.description}</p>
-        </PoseDiv>
+        </PoseDiv> 
+        :
+        <p>Please log into see details</p>
       }
     </div>
 
