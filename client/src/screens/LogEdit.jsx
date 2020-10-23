@@ -1,5 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    button {
+      margin: 20px auto;
+    }
+
+    select {
+      width: 250px;
+      margin: 0 auto 20px;
+    }
+
+    textarea {
+      height: 200px;
+      width: 250px;
+    }
+  }
+`;
 
 const LogEdit = ({ logs, handleLogEdit, poses }) => {
   const [formData, setFormData] = useState({
@@ -76,7 +101,7 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
 
 
   return (
-    <>
+    <StyledDiv>
       <h3>Edit Log</h3>
 
     <form onSubmit={handleSubmit}>
@@ -105,7 +130,7 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
           </p>
           ))}
       </div>
-    </>
+    </StyledDiv>
   )
 };
 

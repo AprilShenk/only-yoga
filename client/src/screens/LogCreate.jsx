@@ -14,13 +14,13 @@ const StyledDiv = styled.div`
     }
 
     select {
-      width: 300px;
+      width: 250px;
       margin: 0 auto 20px;
     }
 
     textarea {
       height: 200px;
-      width: 300px;
+      width: 250px;
     }
   }
 `;
