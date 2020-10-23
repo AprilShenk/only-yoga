@@ -9,6 +9,11 @@ const ImageDiv = styled.div`
   margin: 0 auto;
   background-position: center;
   background-size: cover;
+
+  @media only screen and (min-width: 1100px) {
+    height: 350px;
+    width: 350px;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -19,10 +24,24 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const PosesDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media only screen and (min-width: 700px) {
+    flex-flow: row wrap;
+    justify-content: space-around;
+    h2 {
+      width: 100%;
+    }
+  }
+`;
+
 const Poses = (props) => {
   const { poses } = props;
   return (
-    <div>
+    <PosesDiv>
       <h2>Poses</h2>
       {
         poses.map(pose => (
@@ -36,7 +55,7 @@ const Poses = (props) => {
           </StyledLink>
         ))
       }
-    </div>
+    </PosesDiv>
   );
 };
 
