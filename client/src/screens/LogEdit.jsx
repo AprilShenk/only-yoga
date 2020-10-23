@@ -37,13 +37,21 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
+    setSendData({
+      ...sendData,
+      [name]: value
+    })
     setFormData({
+      ...formData,
       [name]: value,
     });
   }
 
   const handlePoseChange = e => {
     const { name, value } = e.target;
+    setFormData({
+      [name]: value
+    })
     setSendData({
       ...sendData,
       ...sendData[name].push(parseInt(value)), 
@@ -52,8 +60,14 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
   }
 
   const handlePoseRemove = (e) => {
+    const { name, value } = e.target;
     const removePose = currentPoses.find(pose => pose.id === parseInt(e.target.value))
-    console.log(removePose.id);
+    console.log(sendData.poses.indexOf(removePose.id))
+    setSendData({
+      ...sendData,
+      ...sendData.poses.indexOf(removePose.id), 
+      description: formData.description
+    })
   }
   
 
