@@ -45,21 +45,25 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
     })
   }
 
+  const currentPoses = poses.filter(pose => sendData.poses.includes(pose.id))
+
+
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <h3>Edit Log</h3>
       <div>Poses: {
         formData.poses && formData.poses.map(pose => (
           <p key={pose.id}>{pose.name}</p>
         ))
       }
+      </div>
+    <form onSubmit={handleSubmit}>
       <select defaultValue='default' name='poses' onChange={handlePoseChange}>
         <option disabled value='default'>-- Select a pose --</option>
         {poses.map(pose => (
           <option value={pose.id} key={pose.id}>{pose.name}</option>
         ))}
       </select>
-      </div>
       <label>
         Notes:
          <input
@@ -71,6 +75,10 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
       </label>
       <button>Save</button>
     </form>
+    {currentPoses.map(pose => (
+        <p key={pose.id}>{pose.name}</p>
+      ))}
+    </>
   )
 };
 
