@@ -1,4 +1,29 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    button {
+      margin: 20px auto;
+    }
+
+    select {
+      width: 250px;
+      margin: 0 auto 20px;
+    }
+
+    textarea {
+      height: 200px;
+      width: 250px;
+    }
+  }
+`;
 
 const LogCreate = (props) => {
   const [formData, setFormData] = useState({
@@ -6,7 +31,7 @@ const LogCreate = (props) => {
     poses: []
   })
   const { handleLogCreate, poses } = props;
-// redirecting before state updated in parent
+
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value })
@@ -20,7 +45,7 @@ const LogCreate = (props) => {
   const currentPoses = poses.filter(pose => formData.poses.includes(pose.id))
   
   return (
-    <>
+    <StyledDiv>
     <h3>Create Log</h3>
     <form onSubmit={e => {
       e.preventDefault();
@@ -33,9 +58,10 @@ const LogCreate = (props) => {
         ))}
       </select>
       <label>
-        Notes: 
-         <input
-          type="text"
+          Notes: 
+             <br></br>
+         <textarea
+          type="textarea"
           name="description"
           value={formData.description}
           onChange={handleChange}
@@ -46,7 +72,7 @@ const LogCreate = (props) => {
       {currentPoses.map(pose => (
         <p key={pose.id}>{pose.name}</p>
       ))}
-      </>
+      </StyledDiv>
   );
 };
 
