@@ -49,10 +49,10 @@ const StyledLink = styled(Link)`
 
 const Logs = ({ logs, handleLogDelete, currentUser }) => {
 
-  const userLogs = logs.filter(log => log.user_id === currentUser.id)
+  const userLogs = (logs && currentUser) && logs.filter(log => log.user_id === currentUser.id)
 
   const logsJSX = 
-    userLogs.map(log => (
+    userLogs && userLogs.map(log => (
       <StyledDiv key={log.id}>
         <h6>{new Date(log.created_at).toLocaleString()}</h6>
         <div>
@@ -91,7 +91,6 @@ const Logs = ({ logs, handleLogDelete, currentUser }) => {
           </div>
             </>
       }
-      
       
     </div>
   );
