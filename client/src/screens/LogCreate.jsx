@@ -6,7 +6,7 @@ const LogCreate = (props) => {
     poses: []
   })
   const { handleLogCreate, poses } = props;
-// redirecting before state updated in parent
+
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value })
@@ -34,8 +34,8 @@ const LogCreate = (props) => {
       </select>
       <label>
         Notes: 
-         <input
-          type="text"
+         <textarea
+          type="textarea"
           name="description"
           value={formData.description}
           onChange={handleChange}

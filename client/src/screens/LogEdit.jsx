@@ -88,7 +88,7 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
       </select>
       <label>
         Notes:
-         <input
+         <textarea
           type="textarea"
           name="description"
           value={formData.description}
