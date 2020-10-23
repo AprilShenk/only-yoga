@@ -49,13 +49,14 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
 
   const handlePoseChange = e => {
     const { name, value } = e.target;
-    setFormData({
-      [name]: value
-    })
     setSendData({
       ...sendData,
       ...sendData[name].push(parseInt(value)), 
       description: formData.description
+    })
+    setFormData({
+      ...formData,
+      [name]: value
     })
   }
 
