@@ -19,7 +19,6 @@ const App = () => {
   const [logs, setLogs] = useState([]);
   const history = useHistory();
   
-
   // handle logs & poses
   useEffect(() => {
     const fetchLogs = async () => {
@@ -40,6 +39,7 @@ const App = () => {
     setLogs(prevState => ([...prevState, newLog]));
     history.push('/logs')
   }
+
   // handle delete
   const handleLogDelete = async (id) => {
     await destroyLog(id);
@@ -111,6 +111,7 @@ const App = () => {
           <Route exact path="/logs/new">
             <LogCreate
               handleLogCreate={handleLogCreate}
+              currentUser={currentUser}
               poses={poses}
             />
           </Route>
@@ -119,6 +120,7 @@ const App = () => {
             <LogEdit
               logs={logs}
               handleLogEdit={handleLogEdit}
+              poses={poses}
             />
           </Route>
           <Route exact path="/">

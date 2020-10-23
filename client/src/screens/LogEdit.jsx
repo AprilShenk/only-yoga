@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const LogEdit = ({ logs, handleLogEdit }) => {
+const LogEdit = ({ logs, handleLogEdit, poses }) => {
   const [formData, setFormData] = useState({
     description: '',
     poses: []
   });
+  const [sendData, setSendData] = useState({
+    description: '',
+    poses: []
+  })
   const { id } = useParams();
 
   useEffect(() => {
@@ -15,6 +19,11 @@ const LogEdit = ({ logs, handleLogEdit }) => {
         description, 
         poses
       });
+      const poseIds = poses.map(pose => pose.id)
+      setSendData({
+        description, 
+        poses: poseIds
+      });
     }
     if (logs.length) {
       fillFormData()
@@ -23,7 +32,7 @@ const LogEdit = ({ logs, handleLogEdit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    handleLogEdit(id, formData)
+    handleLogEdit(id, sendData)
   }
 
   const handleChange = (e) => {
@@ -32,17 +41,34 @@ const LogEdit = ({ logs, handleLogEdit }) => {
       [name]: value,
     });
   }
+  const handlePoseChange = e => {
+    const { name, value } = e.target;
+    setSendData({
+      ...sendData,
+      ...sendData[name].push(parseInt(value)), 
+      description: formData.description
+    })
+  }
+
+  const currentPoses = poses.filter(pose => sendData.poses.includes(pose.id))
+
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <h3>Edit Log</h3>
       <div>Poses: {
-        formData.poses ? formData.poses.map(pose => (
+        formData.poses && formData.poses.map(pose => (
           <p key={pose.id}>{pose.name}</p>
         ))
-          : ''
       }
       </div>
+    <form onSubmit={handleSubmit}>
+      <select defaultValue='default' name='poses' onChange={handlePoseChange}>
+        <option disabled value='default'>-- Select a pose --</option>
+        {poses.map(pose => (
+          <option value={pose.id} key={pose.id}>{pose.name}</option>
+        ))}
+      </select>
       <label>
         Notes:
          <input
@@ -54,6 +80,10 @@ const LogEdit = ({ logs, handleLogEdit }) => {
       </label>
       <button>Save</button>
     </form>
+    {currentPoses.map(pose => (
+        <p key={pose.id}>{pose.name}</p>
+      ))}
+    </>
   )
 };
 
