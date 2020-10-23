@@ -19,10 +19,16 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const PosesDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 const Poses = (props) => {
   const { poses } = props;
   return (
-    <div>
+    <PosesDiv>
       <h2>Poses</h2>
       {
         poses.map(pose => (
@@ -36,7 +42,7 @@ const Poses = (props) => {
           </StyledLink>
         ))
       }
-    </div>
+    </PosesDiv>
   );
 };
 
