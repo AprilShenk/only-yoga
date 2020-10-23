@@ -41,6 +41,7 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
       [name]: value,
     });
   }
+
   const handlePoseChange = e => {
     const { name, value } = e.target;
     setSendData({
@@ -50,18 +51,19 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
     })
   }
 
+  const handlePoseRemove = (e) => {
+    const removePose = currentPoses.find(pose => pose.id === parseInt(e.target.value))
+    console.log(removePose.id);
+  }
+  
+
   const currentPoses = poses.filter(pose => sendData.poses.includes(pose.id))
 
 
   return (
     <>
       <h3>Edit Log</h3>
-      <div>Poses: {
-        formData.poses && formData.poses.map(pose => (
-          <p key={pose.id}>{pose.name}</p>
-        ))
-      }
-      </div>
+
     <form onSubmit={handleSubmit}>
       <select defaultValue='default' name='poses' onChange={handlePoseChange}>
         <option disabled value='default'>-- Select a pose --</option>
@@ -79,10 +81,15 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
         />
       </label>
       <button>Save</button>
-    </form>
-    {currentPoses.map(pose => (
-        <p key={pose.id}>{pose.name}</p>
-      ))}
+      </form>
+      <div>
+        Poses: 
+        {currentPoses.map(pose => (
+          <p key={pose.id}>{pose.name}
+            <button onClick={handlePoseRemove} value={pose.id}>-</button>
+          </p>
+          ))}
+      </div>
     </>
   )
 };
