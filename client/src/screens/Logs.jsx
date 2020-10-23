@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const StyledDiv = styled.div`
   background: #F0F7F4;
@@ -48,6 +48,10 @@ const StyledButton = styled(Link)`
   }
 `;
 
+const DetailLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 20px;
@@ -68,28 +72,34 @@ const StyledLink = styled(Link)`
 `;
 
 const Logs = ({ logs, handleLogDelete, currentUser }) => {
+  const history = useHistory();
+
+  const routeChange = (id) => {
+    history.push(`/logs/${id}/edit`)
+  }
 
   const userLogs = (logs && currentUser) && logs.reverse().filter(log => log.user_id === currentUser.id)
 
   const logsJSX = 
     userLogs && userLogs.map(log => (
-      <StyledDiv key={log.id}>
-        <h6>{new Date(log.created_at).toLocaleString()}</h6>
-        <div>
-          Poses: {log.poses ? log.poses.map(pose => (
-          <p key={pose.id}>{pose.name}</p>
-        )) :
-        ''}
-        </div>
-        
-        <p>Notes: {log.description}</p>
-        <ButtonDiv>
-          <StyledButton to={`/logs/${log.id}/edit`}><button>Edit</button></StyledButton>
+      <DetailLink to={`/logs/${log.id}`} key={log.id}>
+        <StyledDiv>
+          <h6>{new Date(log.created_at).toLocaleString()}</h6>
+          <div>
+            Poses: {log.poses ? log.poses.map(pose => (
+            <p key={pose.id}>{pose.name}</p>
+          )) :
+          ''}
+          </div>
           
-          <button onClick={() => handleLogDelete(log.id)}>Delete</button>
-        </ButtonDiv>
-        
-      </StyledDiv>
+          <p>Notes: {log.description}</p>
+          <ButtonDiv>
+              <button onClick={() => routeChange(log.id)}>Edit</button>
+            <button onClick={() => handleLogDelete(log.id)}>Delete</button>
+          </ButtonDiv>
+        </StyledDiv>
+      </DetailLink>
+      
     ))
   
 
