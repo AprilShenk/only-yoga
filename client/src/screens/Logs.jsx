@@ -10,6 +10,7 @@ const StyledDiv = styled.div`
   border-radius: 20px;
   color: #705D56;
   font-weight: bold;
+  margin: 10px auto;
 `;
 
 const ButtonDiv = styled.div`
@@ -29,7 +30,7 @@ const ButtonDiv = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledButton = styled(Link)`
   background: #70ABAF;
   width: 25%;
   border-radius: 5px;
@@ -42,6 +43,25 @@ const StyledLink = styled(Link)`
     border: none;
   }
   button:hover {
+    background: #32292F;
+    color: #F0F7F4;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #32292F;
+
+  .add {
+    background: #70ABAF;
+    width: 10%;
+    padding: 5px 5px 7px;
+    margin: 0 auto;
+    border-radius: 10%;
+  }
+  .add:hover {
     background: #32292F;
     color: #F0F7F4;
   }
@@ -64,7 +84,7 @@ const Logs = ({ logs, handleLogDelete, currentUser }) => {
         
         <p>Notes: {log.description}</p>
         <ButtonDiv>
-          <StyledLink to={`/logs/${log.id}/edit`}><button>Edit</button></StyledLink>
+          <StyledButton to={`/logs/${log.id}/edit`}><button>Edit</button></StyledButton>
           
           <button onClick={() => handleLogDelete(log.id)}>Delete</button>
         </ButtonDiv>
@@ -81,15 +101,13 @@ const Logs = ({ logs, handleLogDelete, currentUser }) => {
           <p>Please log in to view logs</p>
           :
           <>
-          <Link to='/logs/new'>
-            <div>
-              Add
-            </div>
-          </Link>
-          <div>
+            <StyledLink to='/logs/new'>
+              <div className="add">
+                +                
+              </div>
+            </StyledLink>
             {logsJSX}
-          </div>
-            </>
+          </>
       }
       
     </div>

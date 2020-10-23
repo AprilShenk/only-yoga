@@ -22,7 +22,7 @@ const ImageDiv = styled.div`
   background-size: cover;
 `;
 
-const PoseDetail = ({ poses }) => {
+const PoseDetail = ({ poses, currentUser }) => {
   
   const { id } = useParams();
   const pose = poses.find(pose => pose.id === Number(id))

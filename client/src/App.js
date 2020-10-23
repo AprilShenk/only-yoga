@@ -99,6 +99,7 @@ const App = () => {
           <Route exact path="/poses/:id">
             <PoseDetail
               poses={poses}
+              currentUser={currentUser}
             />
           </Route>
           <Route exact path="/logs">
