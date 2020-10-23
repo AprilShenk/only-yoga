@@ -7,6 +7,7 @@ import Layout from './components/shared/Layout';
 import Poses from './screens/Poses';
 import PoseDetail from './screens/PoseDetail'
 import Logs from './screens/Logs';
+import LogDetail from './screens/LogDetail';
 import LogEdit from './screens/LogEdit';
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth';
 import { getAllPoses } from './services/poses';
@@ -45,6 +46,7 @@ const App = () => {
     await destroyLog(id);
     const newLogs = logs.filter((log) => log.id !== id);
     setLogs(newLogs)
+    history.push('/logs')
   }
   // handle edit
   const handleLogEdit = async (id, logData) => {
@@ -99,13 +101,7 @@ const App = () => {
           <Route exact path="/poses/:id">
             <PoseDetail
               poses={poses}
-            />
-          </Route>
-          <Route exact path="/logs">
-            <Logs
               currentUser={currentUser}
-              logs={logs}
-              handleLogDelete={handleLogDelete}
             />
           </Route>
           <Route exact path="/logs/new">
@@ -115,7 +111,18 @@ const App = () => {
               poses={poses}
             />
           </Route>
-
+          <Route exact path="/logs">
+            <Logs
+              currentUser={currentUser}
+              logs={logs}
+              handleLogDelete={handleLogDelete}
+            />
+          </Route>
+          <Route exact path="/logs/:id">
+            <LogDetail
+              logs={logs}
+            />
+          </Route>
           <Route exact path="/logs/:id/edit">
             <LogEdit
               logs={logs}

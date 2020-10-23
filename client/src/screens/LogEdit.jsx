@@ -112,13 +112,14 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
         ))}
       </select>
       <label>
-        Notes:
-         <textarea
-          type="textarea"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-        />
+          Notes:
+          <br></br>
+          <textarea
+            type="textarea"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
       </label>
       <button>Save</button>
       </form>

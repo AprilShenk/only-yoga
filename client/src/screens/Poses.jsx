@@ -11,6 +11,14 @@ const ImageDiv = styled.div`
   background-size: cover;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #F0F7F4;
+  h4 {
+    margin-bottom: 50px;
+  }
+`;
+
 const Poses = (props) => {
   const { poses } = props;
   return (
@@ -18,14 +26,14 @@ const Poses = (props) => {
       <h2>Poses</h2>
       {
         poses.map(pose => (
-          <Link to={`/poses/${pose.id}`} key={pose.id}>
+          <StyledLink to={`/poses/${pose.id}`} key={pose.id}>
             <ImageDiv
               role="img"
               alt={pose.name}
               style={{ backgroundImage: `url("${pose.image}")` }}
             />
             <h4>{pose.name}</h4>
-          </Link>
+          </StyledLink>
         ))
       }
     </div>
