@@ -46,6 +46,7 @@ const App = () => {
     await destroyLog(id);
     const newLogs = logs.filter((log) => log.id !== id);
     setLogs(newLogs)
+    history.push('/logs')
   }
   // handle edit
   const handleLogEdit = async (id, logData) => {
@@ -103,6 +104,13 @@ const App = () => {
               currentUser={currentUser}
             />
           </Route>
+          <Route exact path="/logs/new">
+            <LogCreate
+              handleLogCreate={handleLogCreate}
+              currentUser={currentUser}
+              poses={poses}
+            />
+          </Route>
           <Route exact path="/logs">
             <Logs
               currentUser={currentUser}
@@ -115,14 +123,6 @@ const App = () => {
               logs={logs}
             />
           </Route>
-          <Route exact path="/logs/new">
-            <LogCreate
-              handleLogCreate={handleLogCreate}
-              currentUser={currentUser}
-              poses={poses}
-            />
-          </Route>
-
           <Route exact path="/logs/:id/edit">
             <LogEdit
               logs={logs}

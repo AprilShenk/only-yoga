@@ -17,6 +17,7 @@ const ButtonDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
+
   button {
     background: #70ABAF;
     width: 25%;
@@ -30,26 +31,9 @@ const ButtonDiv = styled.div`
   }
 `;
 
-const StyledButton = styled(Link)`
-  background: #70ABAF;
-  width: 25%;
-  border-radius: 5px;
-  border: none;
-  button {
-    background: #70ABAF;
-    width: 100%;
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-  }
-  button:hover {
-    background: #32292F;
-    color: #F0F7F4;
-  }
-`;
-
 const DetailLink = styled(Link)`
   text-decoration: none;
+  z-index: -1;
 `;
 
 const StyledLink = styled(Link)`
@@ -74,7 +58,8 @@ const StyledLink = styled(Link)`
 const Logs = ({ logs, handleLogDelete, currentUser }) => {
   const history = useHistory();
 
-  const routeChange = (id) => {
+  const routeChange = (e, id) => {
+    e.preventDefault()
     history.push(`/logs/${id}/edit`)
   }
 
@@ -94,7 +79,7 @@ const Logs = ({ logs, handleLogDelete, currentUser }) => {
           
           <p>Notes: {log.description}</p>
           <ButtonDiv>
-              <button onClick={() => routeChange(log.id)}>Edit</button>
+            <button onClick={(e) => routeChange(e, log.id)}>Edit</button>
             <button onClick={() => handleLogDelete(log.id)}>Delete</button>
           </ButtonDiv>
         </StyledDiv>
