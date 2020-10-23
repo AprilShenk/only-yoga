@@ -113,7 +113,6 @@ const App = () => {
               handleLogCreate={handleLogCreate}
               currentUser={currentUser}
               poses={poses}
-              logs={logs}
             />
           </Route>
 
@@ -121,6 +120,7 @@ const App = () => {
             <LogEdit
               logs={logs}
               handleLogEdit={handleLogEdit}
+              poses={poses}
             />
           </Route>
           <Route exact path="/">
