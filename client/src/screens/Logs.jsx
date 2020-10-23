@@ -69,7 +69,7 @@ const StyledLink = styled(Link)`
 
 const Logs = ({ logs, handleLogDelete, currentUser }) => {
 
-  const userLogs = (logs && currentUser) && logs.filter(log => log.user_id === currentUser.id)
+  const userLogs = (logs && currentUser) && logs.reverse().filter(log => log.user_id === currentUser.id)
 
   const logsJSX = 
     userLogs && userLogs.map(log => (
