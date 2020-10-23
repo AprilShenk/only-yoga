@@ -19,6 +19,11 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
         description, 
         poses
       });
+      const poseIds = poses.map(pose => pose.id)
+      setSendData({
+        description, 
+        poses: poseIds
+      });
     }
     if (logs.length) {
       fillFormData()
