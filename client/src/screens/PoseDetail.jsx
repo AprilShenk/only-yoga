@@ -10,13 +10,12 @@ const PoseDiv = styled.div`
   border-radius: 10px;
   color: #705D56;
   font-weight: bold;
-  margin: 15px;
 `;
 
 const ImageDiv = styled.div`
   border-radius: 50%;
-  height: 300px;
-  width: 300px;
+  height: 280px;
+  width: 280px;
   margin: 0 auto;
   background-position: center;
   background-size: cover;
@@ -28,7 +27,7 @@ const PoseDetail = ({ poses, currentUser }) => {
   const pose = poses.find(pose => pose.id === Number(id))
   return (
     <div>
-      <h2>Pose Detail</h2>
+      {pose && <h2>{pose.name}</h2>}
       {(pose && currentUser) ? 
         <PoseDiv key={pose.id}>
             <ImageDiv
@@ -36,7 +35,7 @@ const PoseDetail = ({ poses, currentUser }) => {
               alt={pose.name}
               style={{ backgroundImage: `url("${pose.image}")` }}
             />
-            <h4>{pose.name}</h4>
+            
             <p>{pose.description}</p>
         </PoseDiv> 
         :
