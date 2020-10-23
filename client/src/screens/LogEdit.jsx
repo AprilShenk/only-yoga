@@ -60,12 +60,14 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
   }
 
   const handlePoseRemove = (e) => {
-    const { name, value } = e.target;
     const removePose = currentPoses.find(pose => pose.id === parseInt(e.target.value))
     console.log(sendData.poses.indexOf(removePose.id))
+    const poseArr = [...sendData.poses]
+    poseArr.splice(poseArr.indexOf(removePose.id), 1)
+    console.log(poseArr);
     setSendData({
       ...sendData,
-      ...sendData.poses.indexOf(removePose.id), 
+      poses: poseArr,
       description: formData.description
     })
   }
