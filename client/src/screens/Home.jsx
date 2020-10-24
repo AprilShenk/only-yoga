@@ -17,9 +17,9 @@ const Home = ({ currentUser, handleLogin, handleLogout }) => {
         <button onClick={handleLogout}>Logout</button>
           :
           <Login
-        currentUser={currentUser}
-        handleLogout={handleLogout}
-        handleLogin={handleLogin}
+            currentUser={currentUser}
+            handleLogout={handleLogout}
+            handleLogin={handleLogin}
           />
       }
     </div>
