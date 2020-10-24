@@ -14,14 +14,14 @@ const StyledForm = styled.form`
   div {
     width: 80%;
     margin: 0 auto 15px;
-    * {
-      display: flex;
-      justify-content: space-between;
-    }
+
     input {
+      height: 2rem;
       background: #F0F7F4;
       border: none;
       border-radius: 5px;
+      text-align: center;
+      font-size: larger;
     }
   }
 `;
@@ -54,37 +54,31 @@ const Register = ({ error, handleRegister }) => {
         <p>{error}</p>
       }
       <div>
-        <label>
-        Username:&nbsp;
-          <input
-            type="text"
-            value={username}
-            name="username"
-            onChange={handleChange}
-          />
-        </label>
+        <input
+          type="text"
+          value={username}
+          placeholder="Username"
+          name="username"
+          onChange={handleChange}
+        />
       </div>
       <div>
-        <label>
-          Email:&nbsp;
-          <input
-            type="text"
-            value={email}
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
+        <input
+          type="text"
+          value={email}
+          placeholder="Email"
+          name="email"
+          onChange={handleChange}
+        />
       </div>
       <div>
-        <label>
-          Password:&nbsp;
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </label>
+        <input
+          type="password"
+          value={password}
+          placeholder="Password"
+          name="password"
+          onChange={handleChange}
+        />
       </div>
       <button>Register</button>
     </StyledForm>
