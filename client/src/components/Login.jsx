@@ -15,14 +15,13 @@ const StyledForm = styled.form`
   div {
     width: 80%;
     margin: 0 auto 15px;
-    * {
-      display: flex;
-      justify-content: space-between;
-    }
     input {
+      height: 2rem;
       background: #F0F7F4;
       border: none;
       border-radius: 5px;
+      text-align: center;
+      font-size: larger;
     }
   }
 `;
@@ -55,26 +54,22 @@ const Login = (props) => {
         <p>{error}</p>
       }
       <div>
-        <label>
-          Username:&nbsp;
           <input
             type="text"
             value={username}
+            placeholder="Username"
             name="username"
             onChange={handleChange}
           />
-        </label>
       </div>
       <div>
-        <label>
-          Password:&nbsp;
           <input
             type="password"
             value={password}
+            placeholder="Password"
             name="password"
             onChange={handleChange}
           />
-        </label>
       </div>
       
       <button>Login</button>
