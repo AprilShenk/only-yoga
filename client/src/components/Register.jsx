@@ -26,6 +26,11 @@ const StyledForm = styled.form`
   }
 `;
 
+const StyledHeader = styled.h1`
+  font-family: 'Satisfy', cursive;
+  font-size: 70px;
+`;
+
 const Register = ({ error, handleRegister }) => {
   const [formData, setFormData] = useState({
     username: "",
@@ -44,44 +49,47 @@ const Register = ({ error, handleRegister }) => {
   }
 
   return (
-    <StyledForm onSubmit={(e)=>{
-      e.preventDefault();
-      handleRegister(formData);
-    }}>
-      <h3>Register</h3>
-      {
-        error &&
-        <p>{error}</p>
-      }
-      <div>
-        <input
-          type="text"
-          value={username}
-          placeholder="Username"
-          name="username"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          value={email}
-          placeholder="Email"
-          name="email"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <input
-          type="password"
-          value={password}
-          placeholder="Password"
-          name="password"
-          onChange={handleChange}
-        />
-      </div>
-      <button>Register</button>
-    </StyledForm>
+    <>
+      <StyledHeader>Only Yoga</StyledHeader>
+      <StyledForm onSubmit={(e)=>{
+        e.preventDefault();
+        handleRegister(formData);
+      }}>
+        <h3>Register</h3>
+        {
+          error &&
+          <p>{error}</p>
+        }
+        <div>
+          <input
+            type="text"
+            value={username}
+            placeholder="Username"
+            name="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            value={email}
+            placeholder="Email"
+            name="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            name="password"
+            onChange={handleChange}
+          />
+        </div>
+        <button>Register</button>
+      </StyledForm>
+    </>
   )
 };
 
