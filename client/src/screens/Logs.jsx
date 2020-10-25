@@ -55,6 +55,16 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const StyledPose = styled.div`
+  margin: 3px;
+  background: #70ABAF;
+  display: inline-block;
+  padding: 7px;
+  border-radius: 10px;
+  color: #32292F;
+  font-size: small;
+`;
+
 const Logs = ({ logs, handleLogDelete, currentUser }) => {
   const history = useHistory();
 
@@ -71,10 +81,13 @@ const Logs = ({ logs, handleLogDelete, currentUser }) => {
         <StyledDiv>
           <h6>{new Date(log.created_at).toLocaleString()}</h6>
           <div>
-            Poses: {log.poses ? log.poses.map(pose => (
-            <p key={pose.id}>{pose.name}</p>
-          )) :
-          ''}
+            <p>
+              Poses:
+            </p>
+             {log.poses ? log.poses.map(pose => (
+              <StyledPose key={pose.id}>{pose.name}</StyledPose>
+            )) :
+            ''}
           </div>
           
           <p>Notes: {log.description}</p>
