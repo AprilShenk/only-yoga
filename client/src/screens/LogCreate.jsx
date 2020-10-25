@@ -25,6 +25,29 @@ const StyledDiv = styled.div`
   }
 `;
 
+const StyledPose = styled.div`
+  margin: 3px;
+  background: #70ABAF;
+  display: inline-block;
+  padding: 7px;
+  border-radius: 10px;
+  color: #32292F;
+  font-size: small;
+`;
+
+const AddButton = styled.button`
+  background: #70ABAF;
+  width: 25%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  }
+  :hover {
+    background: #32292F;
+    color: #F0F7F4;
+  }
+`;
+
 const LogCreate = (props) => {
   const [formData, setFormData] = useState({
     description: '',
@@ -67,10 +90,10 @@ const LogCreate = (props) => {
           onChange={handleChange}
           />
       </label>
-      <button>Add</button>
+      <AddButton>Add</AddButton>
       </form>
       {currentPoses.map(pose => (
-        <p key={pose.id}>{pose.name}</p>
+        <StyledPose key={pose.id}>{pose.name}</StyledPose>
       ))}
       </StyledDiv>
   );

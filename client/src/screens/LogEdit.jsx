@@ -26,6 +26,42 @@ const StyledDiv = styled.div`
   }
 `;
 
+const StyledPose = styled.div`
+  margin: 3px;
+  background: #70ABAF;
+  display: inline-block;
+  padding: 7px;
+  border-radius: 10px;
+  color: #32292F;
+  font-size: small;
+`;
+
+const RemoveButton = styled.button`
+  color: #705D56;
+  background: #F0F7F4;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  
+  :hover {
+    background: #32292F;
+    color: #F0F7F4;
+  }
+`;
+
+const SaveButton = styled.button`
+  background: #70ABAF;
+  width: 25%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  }
+  :hover {
+    background: #32292F;
+    color: #F0F7F4;
+  }
+`;
+
 const LogEdit = ({ logs, handleLogEdit, poses }) => {
   const [formData, setFormData] = useState({
     description: '',
@@ -95,7 +131,6 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
       description: formData.description
     })
   }
-  
 
   const currentPoses = poses.filter(pose => sendData.poses.includes(pose.id))
 
@@ -121,14 +156,16 @@ const LogEdit = ({ logs, handleLogEdit, poses }) => {
             onChange={handleChange}
           />
       </label>
-      <button>Save</button>
+      <SaveButton>Save</SaveButton>
       </form>
       <div>
-        Poses: 
+        <p>
+          Poses:
+        </p>
         {currentPoses.map(pose => (
-          <p key={pose.id}>{pose.name}
-            <button onClick={handlePoseRemove} value={pose.id}>-</button>
-          </p>
+          <StyledPose key={pose.id}>{pose.name}&nbsp;
+            <RemoveButton onClick={handlePoseRemove} value={pose.id}>x</RemoveButton>
+          </StyledPose>
           ))}
       </div>
     </StyledDiv>
